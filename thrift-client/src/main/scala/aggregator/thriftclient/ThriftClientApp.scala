@@ -16,7 +16,7 @@ object ThriftClientApp extends App {
   implicit val system: ActorSystem[Nothing] = ActorSystem[Nothing](Behaviors.empty, "thrift-client")
   implicit val materializer: ActorMaterializer = ActorMaterializer()(system.toUntyped)
 
-  val loggingEndpoint: ThriftService.MethodPerEndpoint = Thrift.client.build[ThriftService.MethodPerEndpoint]("localhost:8080")
+  val loggingEndpoint: ThriftService.MethodPerEndpoint = Thrift.client.build[ThriftService.MethodPerEndpoint]("thrift-server:9000")
 
   Source.fromIterator(() => Iterator.continually(LogEventFactory.randomEvent()))
     .delay(0.5.seconds)

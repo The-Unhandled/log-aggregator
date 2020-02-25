@@ -1,6 +1,17 @@
 version: '2'
 
 services:
+  thrift-client:
+    image: 'thriftclient:1.0'
+  thrift-server:
+    image: 'thriftserver:1.0'
+    depends_on:
+      - kafka
+  kafka-consumer:
+    image: 'kafkaconsumer:1.0'
+    depends_on:
+      - kafka
+      - cassandra
   cassandra:
     image: 'bitnami/cassandra:3'
     ports:

@@ -15,7 +15,7 @@ enum MessageType {
 
 struct LoggingEvent {
     1: required i16 v,
-    2: i64 time,
+    2: required i64 time,
     3: required string message,
     4: optional string host,
     5: optional Level log_level,

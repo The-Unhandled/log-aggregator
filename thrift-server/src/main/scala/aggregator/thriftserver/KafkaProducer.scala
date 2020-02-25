@@ -22,7 +22,7 @@ class KafkaProducer(implicit val system: ActorSystem[Nothing]) {
   final val config: Config = system.settings.config.getConfig("akka.kafka.producer")
   final val producerSettings: ProducerSettings[String, Array[Byte]] =
     ProducerSettings(config, new StringSerializer, new ByteArraySerializer)
-      .withBootstrapServers(bootstrapServers = "localhost:29092")
+      .withBootstrapServers(bootstrapServers = "kafka:9092")
 
   def pushEvent(event: LoggingEvent): Future[Done] =
     Source(Set(event))

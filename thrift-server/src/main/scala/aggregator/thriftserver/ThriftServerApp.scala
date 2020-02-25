@@ -19,6 +19,6 @@ object ThriftServerApp extends App {
 
   }
 
-  val server = Thrift.server.serveIface(":8080", new ServerImpl(new KafkaProducer()))
+  val server = Thrift.server.serveIface(":9000", new ServerImpl(new KafkaProducer()))
 
 }
